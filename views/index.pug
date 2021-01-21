@@ -1,11 +1,24 @@
 extends layout.pug
 
 block content
-    each user in users
-        h2 Existing Users
+    h2 Existing Users
+    table.table.table-striped
+        thead 
             tr
-                td= user
-                td= user[0].id
-                td= user[0].firstName
-                td= user[0].lastName
-                td= user[0].email
+                th id
+                th First Name
+                th Last Name
+                th Email
+                th Age
+                th Favorite Beatle
+                th Likes Ice Cream
+        tbody
+            each user in users
+                tr
+                    td= user.id
+                    td= user.firstName
+                    td= user.lastName
+                    td= user.email
+                    td= user.age
+                    td= user.favoriteBeatle
+                    td= user.likesIceCream
