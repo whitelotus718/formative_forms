@@ -1,17 +1,36 @@
 extends layout.pug
 //- mixin IF()
+
+mixin input(type, name, placeholder, value)
+    input(type=type, name=name, placeholder=placeholder, value=value)
+mixin label
+    label(for=name)
+
 block content
     form(action="/create" method="post")
         fieldset
-            input(type="hidden" name="_csrf" value=token)
-            input(type="text" name="firstName" placeholder="First Name" required)
-            label(for="firsttName") First Name
-            input(type="text" name="lastName" placeholder="Last Name" required)
-            label(for="lastName") Last Name
-            input(type="email" name="email" placeholder="Email" required)
-            label(for="email") Email
-            input(type="password" name="password" placeholder="Password" required)
-            label(for="password") Password
-            input(type="password" name="confirmedPassword" placeholder="confirmedPassword" required)
-            label(for="confirmedPassword") Confirmed Password
+            //- input(type="hidden" name="_csrf" value=token)
+            +input("hidden", "_csrf", "", token)
+            +input("text", "firstName", "First Name", firstName)
+            +label("firstName")
+            +input("text", "lastName", "Last Name", lastName)
+            +label("lastName")
+            +input("email", "email", "Email", email)
+            +label("email")
+            +input("password", "password", "Password", password)
+            +label("password")
+            +input("password", "confirmedPassword", "Confirmed Password", confirmedPassword)
+            +label("confirmedPassword")
+
             button(type="submit") Submit
+
+            //- input(type="text" name="firstName" placeholder="First Name" value=firstName required)
+            //- label(for="firsttName") First Name
+            //- input(type="text" name="lastName" placeholder="Last Name" required)
+            //- label(for="lastName") Last Name
+            //- input(type="email" name="email" placeholder="Email" required)
+            //- label(for="email") Email
+            //- input(type="password" name="password" placeholder="Password" required)
+            //- label(for="password") Password
+            //- input(type="password" name="confirmedPassword" placeholder="confirmedPassword" required)
+            //- label(for="confirmedPassword") Confirmed Password
